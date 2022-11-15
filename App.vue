@@ -2,11 +2,8 @@
   <v-app>
     <v-main>
       <v-container>
-        <div class="box-1">
-          <tags-box :tags="tags" :align="alignLeft" />
-        </div>
-        <div class="box-2">
-          <tags-box :tags="tags" :align="alignCenter" />
+        <div class="box">
+          <tags-box :tags="tags" :align="alignWidth" />
         </div>
       </v-container>
     </v-main>
@@ -14,61 +11,39 @@
 </template>
 
 <script>
-import TagsBox from "@/components/TagsBox";
+import TagsBox from "@/components/TagsBox.vue";
 export default {
   name: "App",
-
   components: { TagsBox },
+
   data() {
     return {
-      tags: {
-        rating: {
-          icon: "mdi-star",
-          delimeter: "",
-          value: "5",
-        },
-        type: {
-          icon: "",
-          delimeter: "mdi-circle-medium",
-          value: "Обзорная",
-        },
-        transport: {
-          icon: "mdi-bus",
-          delimeter: "mdi-circle-medium",
-          value: "На автобусе",
-        },
-        date: {
-          icon: "",
-          delimeter: "mdi-circle-medium",
-          value: "25 марта",
-        },
-        time: {
-          icon: "mdi-clock-outline",
-          delimeter: "mdi-circle-medium",
-          value: "6 часов",
-        },
-      },
+      tags: [
+        { icon: "mdi-star", text: "5" },
+        { icon: "", text: "Обзорная" },
+        { icon: "mdi-bus", text: "На автобусе" },
+        { icon: "", text: "25 марта" },
+        { icon: "mdi-clock-outline", text: "6 часов" },
+      ],
       alignLeft: "flex-start",
-      alignCenter: "center",
-      
+      alignWidth: "space-between",
     };
   },
 };
 </script>
-<style>
-body, html{
+<style lang="scss" scoped>
+html,
+body {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
-.box-1{
-  border: 1px solid black;
-  margin-bottom: 20px;
-  display: flex;
-  /* justify-content: flex-start; */
-  overflow-y: hidden;
+.container {
+  padding: 0;
 }
-.box-2{
-  margin-left: 100px;
-  border: 1px solid black;
+.box {
+  max-width: 700px;
+  width: 100%;
+  margin: 20px 0;
 }
-
 </style>

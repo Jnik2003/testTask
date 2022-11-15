@@ -1,18 +1,19 @@
 <template>
-  <div class="tag-box" :class="alignFlex">
-    <tag-single v-for="(tag, ind) in tags" :key="ind" :tag="tag" />
+  <div class="tags-box" :class="alignFlex" v-hide>
+    <tags-item v-for="(tag, ind) in tags" :key="ind" :tag="tag" :ind="ind" />
   </div>
 </template>
 
 <script>
-import TagSingle from "@/components/TagSingle";
+import TagsItem from "@/components/TagsItem.vue";
+
 export default {
   name: "TagsBox",
-  components: { TagSingle },
+  components: { TagsItem },
   props: {
     tags: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
     },
     align: {
       type: String,
@@ -23,7 +24,7 @@ export default {
     alignFlex() {
       return {
         alignLeft: this.align === "left",
-        alignCenter: this.align === "center",
+        alignWidth: this.align === "space-between",
       };
     },
   },
@@ -31,15 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tag-box {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  overflow: hidden;
-  height: 32px;
+.tags-box {
+  width: 100%;
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
 }
 
-.alignCenter {
-  justify-content: center;
+.alignWidth {
+  justify-content: space-between;
 }
 </style>
