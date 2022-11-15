@@ -23,7 +23,7 @@ export default {
   computed: {
     alignFlex() {
       return {
-        alignLeft: this.align === "left",
+        alignLeft: this.align === "flex-start",
         alignWidth: this.align === "space-between",
       };
     },
@@ -35,7 +35,7 @@ export default {
 .tags-box {
   width: 100%;
   display: inline-flex;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
 }
 
