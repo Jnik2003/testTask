@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-box" :class="alignFlex" v-hide>
+  <div class="tags-box" :class="alignFlex" v-hide v-if="isMounted">
     <tags-item v-for="(tag, ind) in tags" :key="ind" :tag="tag" :ind="ind" />
   </div>
 </template>
@@ -10,6 +10,11 @@ import TagsItem from "@/components/TagsItem.vue";
 export default {
   name: "TagsBox",
   components: { TagsItem },
+  data() {
+    return {
+      isMounted: false,
+    };
+  },
   props: {
     tags: {
       type: Array,
@@ -20,6 +25,8 @@ export default {
       default: "left",
     },
   },
+  methods: {    
+  },
   computed: {
     alignFlex() {
       return {
@@ -27,6 +34,9 @@ export default {
         alignWidth: this.align === "space-between",
       };
     },
+  },
+  mounted() {
+    this.isMounted = true;
   },
 };
 </script>
@@ -37,6 +47,7 @@ export default {
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
+  border: 1px solid red;
 }
 
 .alignWidth {

@@ -3,7 +3,7 @@
     <v-main>
       <v-container>
         <div class="box">
-          <tags-box :tags="tags" :align="alignLeft" />
+          <tags-box :tags="tags" :align="alignWidth" />
         </div>
       </v-container>
     </v-main>

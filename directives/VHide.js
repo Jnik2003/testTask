@@ -1,13 +1,17 @@
 export default {
   name: "hide",
+
   inserted(el) {
-    let parentRightPosition = el.getBoundingClientRect().right;
-    let nodes = el.childNodes;
-    nodes.forEach((item) => {
-      let rightPosition = item.getBoundingClientRect().right;
-      rightPosition > parentRightPosition
-        ? (item.style.display = "none")
-        : (item.style.display = "flex");
-    });
+    setTimeout(() => {
+      let parentRightPosition = el.getBoundingClientRect().right;
+      let nodes = el.childNodes;
+      nodes.forEach((item) => {
+        let rightPosition = item.getBoundingClientRect().right;
+        // console.log(rightPosition, parentRightPosition)
+        rightPosition > parentRightPosition
+          ? (item.style.display = "none")
+          : (item.style.display = "flex");
+      });
+    }, 500);
   },
 };
