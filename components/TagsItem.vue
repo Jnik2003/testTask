@@ -27,7 +27,6 @@ export default {
 <style lang="scss" scoped>
 .tags-box__item {
   display: flex;
-  width: 100%;
   justify-content: space-between;
 }
 .tag-box__icon {
